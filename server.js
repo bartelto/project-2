@@ -26,6 +26,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/apiUserRoutes")(app);
 require("./routes/apiGamePrefRoutes")(app);
 require("./routes/apiConversationRoutes")(app);
+require("./routes/apiInvitationRoutes")(app);
 require("./routes/apiMessageRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
