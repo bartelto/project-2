@@ -25,6 +25,8 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/apiUserRoutes")(app);
 require("./routes/apiGamePrefRoutes")(app);
+require("./routes/apiConversationRoutes")(app);
+require("./routes/apiMessageRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: true };

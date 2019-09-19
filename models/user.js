@@ -6,9 +6,13 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    // Associating User with GamePrefs
-    // When a User is deleted, also delete any associated GamePrefs
+    // Associating User with GamePref and Message
+    // When a User is deleted, also delete any associated GamePrefs and Messages
     User.hasMany(models.GamePref, {
+      onDelete: "cascade"
+    });
+
+    User.hasMany(models.Message, {
       onDelete: "cascade"
     });
   };
