@@ -4,8 +4,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Conversation.associate = function(models) {
-    // Associating Thread with Message
-    // When a Thread is deleted, also delete any associated Messages
+    // Associating Conversation with Message
+    // When a Conversation is deleted, also delete any associated Messages
     Conversation.hasMany(models.Message, {
       onDelete: "cascade"
     });

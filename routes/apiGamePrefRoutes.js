@@ -17,7 +17,7 @@ module.exports = function(app) {
     });
   });
 
-  // Delete a GamePref by id
+  // Delete a GamePref by id (NOT userID)
   app.delete("/api/gameprefs/:id", function(req, res) {
     db.GamePref.destroy({ where: { id: req.params.id } }).then(function(
       dbGamePref
