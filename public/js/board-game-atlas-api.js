@@ -1,146 +1,152 @@
-/* eslint-disable camelcase */
-$(document).ready(function() {
-  // Test
-  console.log("page loaded");
+/* eslint-disable quotes */
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
+$(document).ready(function () {
+
+    console.log("page loaded");
 });
 
 //----------------------------------------------
 // FUNCTIONS
 //----------------------------------------------
 
-var searchForGameImage = function(game) {
-  // API Info
-  var client_id = "9fjVgdS5UU";
+var searchForGameImage = function (game) {
 
-  //var client_secret = "0325e7b09e520fb8ac09629f3729f338";
+    // API Info
+    var clientId = "9fjVgdS5UU";
 
-  // Constructing a URL to search Board Game Atlas API for images of a game
-  var queryURL =
-    "https://www.boardgameatlas.com/api/search?name=" +
-    game +
-    "&client_id=" +
-    client_id +
-    "&limit=8";
+    //var clientSecret = "0325e7b09e520fb8ac09629f3729f338";
 
-  // Test
-  //console.log(queryURL);
+    // Constructing a URL to search Board Game Atlas API for images of a game
+    var queryURL = "https://www.boardgameatlas.com/api/search?name=" + game + "&client_id=" + clientId + "&limit=8";
 
-  // Performing our AJAX GET request
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-    // After the data comes back from the API, do the actions in this function
-    .then(function(response) {
-      // Storing an array of results in the results variable
-      var results = response.games;
+    //console.log(queryURL);
 
-      // for (var i = 0; i < results.length; i++) {
+    // Performing our AJAX GET request
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        // After the data comes back from the API, do the actions in this function
+        .then(function (response) {
 
-      // console.log(results[i]);
+            // Storing an array of results in the results variable
+            var results = response.games;
 
-      // Variables for specific API results
-      var apiImage = results[0].images.small;
-      //  console.log(apiImage);
+            for (var i = 0; i < results.length; i++) {
 
-      var apiName = results[0].name;
-      var apiNum = results[0].id;
+                // Variables for specific API results
+                var apiImage = results[i].images.small;
+                //  console.log(apiImage);
 
-      // Test
-      console.log(apiName);
-      console.log(apiImage);
-      console.log(apiNum);
+                var apiName = results[i].name;
+                var apiNum = results[i].id;
 
-      // Function to render image to page when profile is created
-      var renderSearchedImage = function() {
-        // Creating a div for the board game images
-        var gameImageDiv = $("<div class='divForGameImage'>");
+                // Test
+                console.log(apiName);
+                console.log(apiImage);
+                console.log(apiNum);
 
-        // Adding a submit type attribute to gameImageDiv
-        gameImageDiv.attr("type", "submit");
-        gameImageDiv.attr("id", apiNum);
+                // Function to render image to page when profile is created
+                var renderSearchedImage = function () {
 
-        // Creating an image tag
-        var gameImage = $("<img>");
+                    // Creating a div for the board game images
+                    var gameImageDiv = $('<div class="divForGameImage">');
 
-        // Creating game name paragraph
-        var gameName = $("<p>").text(apiName);
+                    // Adding a submit type, id, and value attribute to gameImageDiv
+                    gameImageDiv.attr("type", "submit");
+                    gameImageDiv.attr("id", apiNum);
+                    gameImageDiv.attr("value", "searched");
 
-        // Giving the image tag an src attribute and a new id
-        gameImage.attr("src", apiImage);
-        gameImage.attr("id", "searchedGameImage");
+                    // Creating an image tag
+                    var gameImage = $("<img>");
 
-        // Giving the gameName a new id
-        gameName.attr("id", "searchedGameName");
+                    // Creating game name paragraph
+                    var gameName = $("<p>").text(apiName);
 
-        // Append the gameImage & gameName we created to the created "gameImageDiv" div
-        gameImageDiv.append(gameImage);
-        gameImageDiv.append(gameName);
+                    // Giving the image tag an src attribute and a new id
+                    gameImage.attr("src", apiImage);
+                    gameImage.attr("id", "searchedGameImage");
 
-        // Prepend the gameImageDiv to the "#searched-images-appear-here" div in the HTML
-        $("#game-search-results-section").prepend(gameImageDiv);
-        //  };
-      };
-      // Call renderSearchedImage function
-      renderSearchedImage();
+                    // Giving the gameName a new id
+                    gameName.attr("id", "searchedGameName");
 
-      // Event handler to select preferred images
-      $(".divForGameImage").on("click", function(event) {
-        console.log("IMAGE clicked!");
+                    // Append the gameImage & gameName we created to the created "gameImageDiv" div
+                    gameImageDiv.append(gameImage);
+                    gameImageDiv.append(gameName);
 
-        // Preventing the button from trying to submit the form
-        event.preventDefault();
+                    // Append the gameImageDiv to the "#searched-images-appear-here" div in the HTML
+                    $("#game-search-results-section").append(gameImageDiv);
 
-        //
-        //var preferrerdGame = $(this).attr("id");
+                };
 
-        // Appending the content of the div with class .divForGameImage to the "#preferred-images-appear-here" div in the HTML
-        $(".divForGameImage").appendTo("#preferred-images-appear-here");
+                // Call renderSearchedImage function
+                renderSearchedImage();
+            }
 
-        // Adding the class .selectedGame to the .divForGameImage
-        $(".divForGameImage").addClass("selectedGame");
-      });
-    });
+            // Select games to add to list
+            $(document).on("click", ".divForGameImage", function () {
+
+                // Creating variable value to identify value of this .divForGameImage
+                var value = $(this).attr("value");
+
+                // Preventing the button from trying to submit the form
+                event.preventDefault();
+
+                // If the value of .divForGameImage is "searched", change it to "add-to-list"
+                if (value === "searched") {
+                    console.log("IMAGE clicked!");
+                    $(this).attr("value", "add-to-list");
+                    $(this).addClass("addedGame");
+                }
+                // Else, keep it as is
+                else {
+                    $(this).attr("value", "searched");
+                }
+            });
+        });
 };
 
 //----------------------------------------------
 // EVENT HANDLERS
 //----------------------------------------------
 
-// Event handler for search button
-$("#game-search-button").on("click", function(event) {
-  console.log("SEARCH BUTTON clicked!");
+// Event handler for game-search-button
+$("#game-search-button").on("click", function (event) {
 
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    console.log("SEARCH BUTTON clicked!");
 
-  // Storing the name of game
-  var inputGame = $("#game-search-input")
-    .val()
-    .trim();
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
 
-  // Running the searchForGameImage function, passing thru inputGame
-  searchForGameImage(inputGame);
+    // Storing the name of game
+    var inputGame = $("#game-search-input").val().trim();
+
+    // Running the searchForGameImage function, passing thru inputGame
+    searchForGameImage(inputGame);
+
 });
 
-// Event handler to add preferred images to profile
-$("#add-to-list-button").on("click", function(event) {
-  console.log("ADD BUTTON clicked!");
+// Event handler to add preferred images to user-list-gallery-section
+$("#add-to-list-button").on("click", function (event) {
+    console.log("ADD TO LIST BUTTON clicked!");
 
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
 
-  // Appending the content of the div with class .selectedGame to the "#saved-images-appear-here" div in the HTML
-  $(".selectedGame").prependTo("#saved-images-appear-here");
+    // Appending .divForGameImage to user-list-gallery-section div
+    $(".addedGame").appendTo("#user-list-gallery-section");
 
-  // Adding the class .savedGame to the ".selectedGame" div
-  $(".selectedGame").addClass("savedGame");
 });
 
 // Event handler for save-profile-button
-$("#save-profile-button").on("click", function(event) {
-  console.log("SAVE PROFILE BUTTON clicked!");
+$("#save-profile-button").on("click", function (event) {
+    console.log("SAVE PROFILE BUTTON clicked!");
 
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+
+    // Empty divs
+    $("#game-search-results-section").empty();
+
 });
