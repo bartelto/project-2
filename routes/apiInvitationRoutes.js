@@ -10,10 +10,12 @@ module.exports = function(app) {
 
   // Get all Invitations for a particular userId (NOT id)
   app.get("/api/invitations/:userId", function(req, res) {
-    db.Invitation.findAll({ where: { UserId: req.params.userId } }).then(
-      function(dbInvitations) {
-        res.json(dbInvitations);
-      });
+    db.Invitation.findAll({
+      where: { UserId: req.params.userId },
+      include: [db.Conversation]
+    }).then(function(dbInvitations) {
+      res.json(dbInvitations);
+    });
   });
 
   // Create a new Invitation
