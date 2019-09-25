@@ -22,6 +22,16 @@ module.exports = function(app) {
     });
   });
 
+  // Load profile creation page
+  app.get("/user/", function(req, res) {
+    res.render("profileCreation");
+  });
+
+  // Load matching users page
+  app.get("/matches/", function(req, res) {
+    res.render("matches");
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
