@@ -1,3 +1,50 @@
 .list-group-item {
   line-height: 2.5;
 }
+.index-icon {
+  margin: 25px;
+  height: 50px;
+  width: 50px;
+
+}
+
+.background {
+  height: 100vh;
+}
+
+#index-buttons-section {
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  padding: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#index-icons-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#index-title {
+  font-weight: 900;
+  font-size: 19vh;
+  color: white;
+}
+
+#index-title-section {
+  text-align: center;
+}
+
+#sign-up-button {
+background-color: #DF3349;
+color: white;
+}
+
+#log-in-button {
+  background-color: #E5533B;
+  color: white;
+}
