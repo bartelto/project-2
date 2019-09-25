@@ -4,129 +4,49 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles/styles.css" media="screen" title="no title" charset="utf-8">
     <title>Home Page</title>
 </head>
 
 <body>
-    <!--spacing etc still needs to be worked out, but this is the basic layout of how I want the page-->
-    <!--Header image. Will scroll away-->
-    <div class="jumbotron jumbotron-fluid">
+    <div class="background"
+        style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
+        <div class="row">
+            <div id="index-title-section" class="col justify-content-center">
+                <h1 id="index-title">Welcome to Game Spark</h1>
+            </div>
+        </div>
+
         <div class="container">
-            <h1 class="display-4">Game Spark</h1>
-            <!--this tagline can totally be change. I just came up with it on the fly and am not particularly attached to it-->
-            <p class="lead">A social networking experience for nerds just like you.</p>
-        </div>
-    </div>
-
-
-    <!--the main nav bar. I have the "our story" tab, but will take it out if I don't end up getting to that page-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            Game Spark
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Matches</a>
-                <a class="nav-item nav-link" href="#">Profile</a>
-                <a class="nav-item nav-link" href="#">Our Story</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div id="main-title-section">
-            <h1 id="main-title">Meet your matches</h1>
-        </div>
-        <div id="matches-display-section">
             <div class="row">
-                <div class="col-6 col-md-3">
-                    <p>test</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <p>test</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <p>test</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <p>test</p>
+                <div id="index-icons-section" class="col-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png"
+                        class="index-icon">
                 </div>
             </div>
-            <p>all these hrs are for test purposes so I can scroll.</p>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
+
+            <div class="row">
+                <div id="index-buttons-section" class="col-4 align-center rounded">
+                    <button type="button" id="sign-up-button" class="btn btn-lg index-button">Sign Up</button>
+                    <button type="button" id="log-in-button" class="btn btn-lg index-button">Log In</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!--footer will have links to our GitHub accounts-->
-    <nav class="navbar navbar-light bg-light justify-content-center">
-        <a class="nav-item nav-link" href="#">Shannon</a>
-        <a class="nav-item nav-link" href="#">Ashley</a>
-        <a class="nav-item nav-link" href="#">Todd</a>
-        <a class="nav-item nav-link" href="#">Sable</a>
-    </nav>
-
-
-
-
-
-
-    <!-- Importing jQuery library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!--Importing Bootstrap JavaScript-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
