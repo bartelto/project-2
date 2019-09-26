@@ -68,10 +68,45 @@ nav {
     background-color: #E5533B;
 }
 
+#footer {
+  background-color: #F09220;
+}
+
 .jumbotron {
   margin: 0px;
 }
 
 .background {
   background-color: #EB722E;
+  padding-bottom: 20px;
+}
+
+#main-title {
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a {
+  color: white;
+}
+
+.match-display-section div {
+  text-align: center;
+  vertical-align: center;
+}
+
+#matches-display-section {
+  margin-bottom: 60px;
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  padding: 15px;
+}
+
+.match-image {
+  max-width: 100%;
+}
+
+.match-name {
+
 }

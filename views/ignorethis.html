@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="../public/images/favicon.ico.ico" type="image/x-icon">
+
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,900" rel="stylesheet">
@@ -25,9 +27,9 @@
     <!--the main nav bar. I have the "our story" tab, but will take it out if I don't end up getting to that page-->
     <div class="navbar-wrap">
         <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbar">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                    class="d-inline-block align-top" alt="">
+            <a class="navbar-brand" href="/profileView">
+                <img src="../public/images/gameSparkLogoWhite.svg" width="30" height="30"
+                    class="d-inline-block align-top">
                 Game Spark
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -37,8 +39,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/matches">Matches</a>
-                    <a class="nav-item nav-link" href="">Profile</a>
-                    <a class="nav-item nav-link" href="#">Our Story</a>
+                    <a class="nav-item nav-link" href="/profileView">Profile</a>
+                    <a class="nav-item nav-link" href="about">Our Story</a>
                 </div>
             </div>
         </nav>
@@ -46,9 +48,9 @@
     <div class="background">
         <div class="container">
             <div id="main-title-section">
-                <h1 id="main-title">Meet your matches</h1>
+                <h1 id="main-title">Meet your matches!</h1>
             </div>
-            <div id="matches-display-section" class="row">
+            <div id="matches-display-section" class="row rounded">
                 <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
                 <template id="matches-template">
                     <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
@@ -64,6 +66,7 @@
                         </div>
                     </div>
                 </template>
+
 
                 <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
                     aria-hidden="true">
@@ -106,14 +109,16 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
             <!--footer will have links to our GitHub accounts-->
-            <nav class="navbar navbar-dark fixed-bottom justify-content-center">
-                <a class="nav-item nav-link" href="#">Shannon</a>
-                <a class="nav-item nav-link" href="#">Ashley</a>
-                <a class="nav-item nav-link" href="#">Todd</a>
-                <a class="nav-item nav-link" href="#">Sable</a>
+            <nav class="navbar navbar-dark fixed-bottom justify-content-center" id="footer">
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/shannon-burke">Shannon</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/ashleyerffmeyer">Ashley</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
             </nav>
 
 
