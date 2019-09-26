@@ -73,11 +73,18 @@ var newUserSubmit = function (event) {
     $userName.val("");
     $userImg.val("");
 
-    API.newUser(User);
-    // .then(function () {
-    // window.location.href = "/matches";
-    // });
+    API.newUser(User)
+        .then(function () {
+            $.get("/api/users/" + currentFBUser.email, function (data) {
+                // log the data to our console
+                console.log(data);
+                currentUser = data;
 
+            }).then(function () {
+                window.location.href = "/matches";
+            });
+
+        });
 
 };
 
