@@ -15,7 +15,113 @@
 
 
 
+    <!--Header image. Will scroll away-->
+    <div class="jumbotron jumbotron-fluid"
+        style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
+        <div class="container">
+            <h1 class="display-4" id="jumbotron-title">Game Spark</h1>
+            <!--this tagline can totally be change. I just came up with it on the fly and am not particularly attached to it-->
+            <p class="lead" id="jumbotron-caption">A social networking experience for nerds just like you.</p>
+        </div>
+    </div>
 
+
+    <!--the main nav bar. I have the "our story" tab, but will take it out if I don't end up getting to that page-->
+    <div class="navbar-wrap">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbar">
+            <a class="navbar-brand" href="/profileView">
+                <img src="/images/gameSparkLogoWhite.svg" width="30" height="30" class="d-inline-block align-top">
+                Game Spark
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/matches">Matches</a>
+                    <a class="nav-item nav-link" href="/profileView">Profile</a>
+                    <a class="nav-item nav-link about" href="/about">Our Story</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="background">
+        <div class="container">
+            <div id="about-wrapper" class="rounded">
+                <div class="row">
+                    <h1 id="about">Meet the masterminds</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <img src="/images/shannon.jpg" class="team-photo">
+                        <br>
+                        <h1 class="team-name">Shannon Burke</h1>
+                        <p class="team-bio">Artsy by nature, techy by design.</p>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <img src="/images/sable.jpg" class="team-photo">
+                        <br>
+                        <h1 class="team-name">Sable Hoover</h1>
+                        <p class="team-bio">Soft-spoken and super smart.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <img src="/images/todd.jpg" class="team-photo">
+                        <br>
+                        <h1 class="team-name">Todd Bartelt</h1>
+                        <p class="team-bio">Not your average dad.</p>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <img src="/images/ashley.jpg" class="team-photo">
+                        <br>
+                        <h1 class="team-name">Ashley Erffmeyer</h1>
+                        <p class="team-bio">All around female force of nature.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h1 id="great-things">Great things are on the horizon.</h1>
+                </div>
+                <ul>
+                    <li>One to one messaging system</li>
+                    <li>User groups</li>
+                    <li>Game suggestions based upon user selections</li>
+                    <li>Location services to match user's based upon proximity</li>
+                    <li>Match filtering for specific games, game ownership, and hosting availability</li>
+                    <li>Official profiles for businesses looking to host events</li>
+                </ul>
+            </div>
+
+
+
+            <!--footer will have links to our GitHub accounts-->
+            <nav class="navbar navbar-dark fixed-bottom justify-content-center" id="footer">
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/shannon-burke">Shannon</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/ashleyerffmeyer">Ashley</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
+                <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
+            </nav>
+
+
+
+            <!-- Importing jQuery library -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+            <!--Importing Bootstrap JavaScript-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        </div>
+    </div>
 
 
 </body>
