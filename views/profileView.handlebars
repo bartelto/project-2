@@ -25,6 +25,7 @@
                 <a class="nav-item nav-link" href="/matches">Matches</a>
                 <a class="nav-item nav-link active" href="/profileView">Profile</a>
                 <a class="nav-item nav-link" href="about">Our Story</a>
+                <a class="nav-item nav-link pull-right" id="LOGOUT-button">Logout</a>
             </div>
         </div>
     </nav>
@@ -87,3 +88,23 @@
             crossorigin="anonymous"></script>
     </div>
 </div>
+
+<!-- Firebase scripts-->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCJHh2ifng2yuFDtWh_ANlr3JGTQQUl2Do",
+        authDomain: "groupproject-2.firebaseapp.com",
+        databaseURL: "https://groupproject-2.firebaseio.com",
+        projectId: "groupproject-2",
+        storageBucket: "",
+        messagingSenderId: "632422965301",
+        appId: "1:632422965301:web:407c34c8dba8e9848ad17c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<!--Importing our JavaScript-->
+<script type="text/javascript" src="/js/login.js"></script>

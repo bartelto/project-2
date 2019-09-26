@@ -37,7 +37,6 @@ var newUserSubmit = function (event) {
     //Saving the input fields values directly into the user object
     var User = {
         authId: $userEmail.val().trim(),
-        password: $userPassword.val().trim(),
         screenName: $userName.val().trim(),
         imageUrl: $userImg.val().trim()
     };
@@ -54,10 +53,16 @@ var newUserSubmit = function (event) {
         return;
     }
 
-    //Creating the user in Firebase(Only takes the email and password)
+    //Creating the user in Firebase
     firebase
         .auth()
         .createUserWithEmailAndPassword(User.authId, pass.password)
+        .then(function (result) {
+            return result.user.updateProfile({
+                displayName: User.screenName,
+                photoURL: User.imageUrl
+            });
+        })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -70,7 +75,7 @@ var newUserSubmit = function (event) {
 
     API.newUser(User);
     // .then(function () {
-    //TODO: Redirect to Matches page here
+    // window.location.href = "/matches";
     // });
 
 
