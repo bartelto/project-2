@@ -57,6 +57,9 @@ var searchForGameImage = function (game) {
                     gameImageDiv.attr("type", "submit");
                     gameImageDiv.attr("id", apiNum);
                     gameImageDiv.attr("value", "searched");
+                    gameImageDiv.attr("data-id", apiNum)
+                      .attr("data-name", apiName)
+                      .attr("data-image", apiImage);
 
                     // Creating an image tag
                     var gameImage = $("<img>");
@@ -136,6 +139,7 @@ $("#add-to-list-button").on("click", function (event) {
 
     // Appending .divForGameImage to user-list-gallery-section div
     $(".addedGame").appendTo("#user-list-gallery-section");
+    $("#game-search-results-section").empty();
 
 });
 
@@ -145,6 +149,41 @@ $("#save-profile-button").on("click", function (event) {
 
     // Preventing the button from trying to submit the form
     event.preventDefault();
+
+    // Post User data via AJAX
+    $.ajax("/api/users", {
+      type: "POST",
+      data: {
+        authId: $("#user-email-input").val().trim(),
+        screenName: $("#user-name-input").val().trim(),
+        imageUrl: $("#user-imageURL-input").val().trim(),
+      }
+    }).then(
+      function(data) {
+        console.log("added new user, id = " + data.id);
+        //let addedGames = $(".addedGame");
+        let list = $(".addedGame").map(function(){
+          let game = {
+            gameId: $(this).attr("data-id"),
+            gameName: $(this).attr("data-name"),
+            UserId: data.id
+          } 
+          return game; 
+        }).get();
+        //console.log(list);
+       
+        // Post GamePref data via AJAX
+        $.ajax("/api/gameprefs", {
+          type: "POST",
+          data: list[0]
+        }).then(
+          function() {
+            console.log("added new GamePrefs");
+
+          // load the profile view page
+          });
+      }
+    );
 
     // Empty divs
     $("#game-search-results-section").empty();
