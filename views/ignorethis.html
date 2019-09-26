@@ -13,37 +13,85 @@
 
 <body>
 
-    <div class="landing-background"
-        style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
-        <div class="row">
-            <div id="index-title-section" class="col justify-content-center">
-                <h1 id="index-title">Welcome to Game Spark</h1>
-            </div>
-        </div>
 
+    <!--Header image. Will scroll away-->
+    <div class="jumbotron jumbotron-fluid"
+        style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
+        <div class="container">
+            <h1 class="display-4" id="jumbotron-title">Game Spark</h1>
+            <!--this tagline can totally be change. I just came up with it on the fly and am not particularly attached to it-->
+            <p class="lead" id="jumbotron-caption">A social networking experience for nerds just like you.</p>
+        </div>
+    </div>
+
+    <div class="background">
         <div class="container">
             <div class="row">
-                <div id="index-icons-section" class="col-12">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                    <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
-                </div>
-            </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8 rounded" id="whole-form-section">
+                    <form>
+                        <div id="first-input-section">
+                            <div class="form-group">
+                                <label for="user-email-input">Email address</label>
+                                <input type="email" class="form-control" id="user-email-input"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-password-input">Password</label>
+                                <input type="password" class="form-control" id="user-password-input"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-name-input">Display Name</label>
+                                <input type="text" class="form-control" id="user-name-input"
+                                    placeholder="Choose a name to display to other users">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-imageUrl-input">Image URL</label>
+                                <input type="text" class="form-control" id="user-imageURL-input"
+                                    placeholder="Enter a URL to an image to use as your profile image">
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="game-search-section">
+                            <div id="game-search-bar-section">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="game-search-input"
+                                        placeholder="Search for a game" aria-label="Search for a game"
+                                        aria-describedby="game-search-button">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" id="game-search-button">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="game-search-results-section">
+                                <!--thumbnails images/game titles generate here for the user to select and add to their list. Text below can be deleted at any point-->
 
-            <div class="row">
-                <div id="index-buttons-section" class="col-sm-11 col-md-4 align-center rounded">
-                    <a href="profileCreation"><button type="button" id="sign-up-button"
-                            class="btn btn-lg index-button">Sign
-                            Up</button></a>
-                    <a href="/logIn"><button type="button" id="log-in-button" class="btn btn-lg index-button">Log
-                            In</button></a>
+                            </div>
+                            <div id="add-to-list-button-section">
+                                <button class="btn btn-primary" id="add-to-list-button">Add to list</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="user-list-section">
+                            <div id="my-list-text-section">
+                                <h2 id="my-list-title">My List:</h2>
+                            </div>
+                            <div id="user-list-gallery-section">
+                                <!--This is where the thumbnail image/game names will appear once the user has confirmed they want the searched game added to their list. Text below can be deleted at any point-->
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="save-profile-button-section">
+                            <button class="btn btn-primary" id="save-profile-button">Save profile</button>
+                        </div>
+                    </form>
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
     </div>
+
 
 
     <!-- Importing jQuery library -->
@@ -57,6 +105,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <!-- Firebase scripts-->
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCJHh2ifng2yuFDtWh_ANlr3JGTQQUl2Do",
+            authDomain: "groupproject-2.firebaseapp.com",
+            databaseURL: "https://groupproject-2.firebaseio.com",
+            projectId: "groupproject-2",
+            storageBucket: "",
+            messagingSenderId: "632422965301",
+            appId: "1:632422965301:web:407c34c8dba8e9848ad17c"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <!--Importing our JavaScript-->
+    <script type="text/javascript" src="/js/register.js"></script>
+    <script type="text/javascript" src="/js/board-game-atlas-api.js"></script>
 
 
 
