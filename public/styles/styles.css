@@ -86,6 +86,7 @@ nav {
 .background {
   background-color: #EB722E;
   padding-bottom: 20px;
+  padding-top: 10px;
   min-height: 100vh;
 }
 
@@ -197,4 +198,14 @@ a:hover {
 
 #add-to-list-button {
   margin-top: 5px;
+}
+
+#about-wrapper {
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  padding: 20px;
+}
+
+.team-photo {
+  max-width: 75%;
 }
