@@ -40,64 +40,94 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="/matches">Matches</a>
-                    <a class="nav-item nav-link" href="/profileView">Profile</a>
-                    <a class="nav-item nav-link about" href="/about">Our Story</a>
+                    <a class="nav-item nav-link active" href="/profileView">Profile</a>
+                    <a class="nav-item nav-link" href="about">Our Story</a>
                 </div>
             </div>
         </nav>
     </div>
-
-
     <div class="background">
         <div class="container">
-            <div id="about-wrapper" class="rounded">
-                <div class="row">
-                    <h1 id="about">Meet the masterminds</h1>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <img src="/images/shannon.jpg" class="team-photo">
-                        <br>
-                        <h1 class="team-name">Shannon Burke</h1>
-                        <p class="team-bio">Artsy by nature, techy by design.</p>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <img src="/images/sable.jpg" class="team-photo">
-                        <br>
-                        <h1 class="team-name">Sable Hoover</h1>
-                        <p class="team-bio">Soft-spoken and super smart.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <img src="/images/todd.jpg" class="team-photo">
-                        <br>
-                        <h1 class="team-name">Todd Bartelt</h1>
-                        <p class="team-bio">Not your average dad.</p>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <img src="/images/ashley.jpg" class="team-photo">
-                        <br>
-                        <h1 class="team-name">Ashley Erffmeyer</h1>
-                        <p class="team-bio">All around female force of nature.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <h1 id="great-things">Great things are on the horizon.</h1>
-                </div>
-                <ul>
-                    <li>One to one messaging system</li>
-                    <li>User groups</li>
-                    <li>Game suggestions based upon user selections</li>
-                    <li>Location services to match user's based upon proximity</li>
-                    <li>Match filtering for specific games, game ownership, and hosting availability</li>
-                    <li>Official profiles for businesses looking to host events</li>
-                </ul>
+            <div id="main-title-section">
+                <h1 id="main-title">Meet your matches!</h1>
             </div>
+            <div id="matches-display-section" class="row rounded">
+                <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
+                <template id="matches-template">
+                    <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
+                        data-target="#match-modal">
+                        <div class="match-image-section">
+                            <!--this image is the match's profile image-->
+                            <img src="" class="match-image">
+                        </div>
+                        <div class="match-name-section">
+                            <h3 class="match-name">
+                                <!--Match's name is displayed here-->
+                            </h3>
+                        </div>
+                    </div>
+                </template>
+
+                <!--dummy match to show what it *should* look like-->
+                <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
+                    data-target="#match-modal">
+                    <div class="match-image-section">
+                        <!--this image is the match's profile image-->
+                        <img src="https://i.imgur.com/FjSPtdg.jpg" class="match-image">
+                    </div>
+                    <div class="match-name-section">
+                        <h3 class="match-name">
+                            <!--Match's name is displayed here-->
+                            Shannon Burke
+                        </h3>
+                    </div>
+                </div>
 
 
+                <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="match-modal-title">Here's your match!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-4" id="modal-image-section">
+                                        <img src="" id="modal-image">
+                                        <!--this image is the match's profile image-->
+                                    </div>
+                                    <div class="col-8" id="modal-name-section">
+                                        <h2 id="modal-name">
+                                            <!--This is where the match's display name is displayed-->
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="modal-email-section">
+                                        <p id="modal-email">
+                                            <!--This is where the match's email address is displayed-->
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h3>Games list:</h3>
+                                </div>
+                                <div class="row">
+                                    <div id="modal-games-section">
+                                        <!--This is where the match's games are displayed-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
 
             <!--footer will have links to our GitHub accounts-->
             <nav class="navbar navbar-dark fixed-bottom justify-content-center" id="footer">
@@ -106,6 +136,9 @@
                 <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
                 <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
             </nav>
+
+
+
 
 
 
