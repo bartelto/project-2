@@ -32,7 +32,7 @@ module.exports = function (app) {
     res.render("signIn");
   });
 
-  app.get("/myProfile", function (req, res) {
+  app.get("/profileView", function (req, res) {
     res.render("profileView");
   });
 
