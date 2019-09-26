@@ -136,6 +136,7 @@ $("#add-to-list-button").on("click", function (event) {
 
     // Appending .divForGameImage to user-list-gallery-section div
     $(".addedGame").appendTo("#user-list-gallery-section");
+    $("#game-search-results-section").empty();
 
 });
 
