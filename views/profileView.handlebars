@@ -1,0 +1,85 @@
+<!--Header image. Will scroll away-->
+<div class="jumbotron jumbotron-fluid"
+    style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
+    <div class="container">
+        <h1 class="display-4" id="jumbotron-title">Game Spark</h1>
+        <!--this tagline can totally be change. I just came up with it on the fly and am not particularly attached to it-->
+        <p class="lead" id="jumbotron-caption">A social networking experience for nerds just like you.</p>
+    </div>
+</div>
+
+
+<!--the main nav bar. I have the "our story" tab, but will take it out if I don't end up getting to that page-->
+<div class="navbar-wrap">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbar">
+        <a class="navbar-brand" href="/profileView">
+            <img src="../public/images/gameSparkLogoWhite.svg" width="30" height="30" class="d-inline-block align-top">
+            Game Spark
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/matches">Matches</a>
+                <a class="nav-item nav-link active" href="/profileView">Profile</a>
+                <a class="nav-item nav-link" href="about">Our Story</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="background">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-12 col-md-4" id="profile-pic-section">
+                <!--profile pic goes here-->
+                <img src="" alt="" id="profile-pic">
+            </div>
+            <div class="col-12 col-md-8" id="user-name-section">
+                <h2 id="user-name">
+                    <!--username goes here-->
+                </h2>
+                <div class="row">
+                    <h1 id="my-list-title">My list:</h1>
+                </div>
+                <div class="row">
+                    <div id="user-game-list">
+                        <!--user's game list goes here-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--footer will have links to our GitHub accounts-->
+        <nav class="navbar navbar-dark fixed-bottom justify-content-center" id="footer">
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/shannon-burke">Shannon</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/ashleyerffmeyer">Ashley</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
+        </nav>
+
+
+
+
+
+
+        <!-- Importing jQuery library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!--Importing Bootstrap JavaScript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    </div>
+</div>
