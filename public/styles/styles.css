@@ -8,7 +8,7 @@
 
 }
 
-.background {
+.landing-background {
   height: 100vh;
 }
 
@@ -47,4 +47,31 @@ color: white;
 #log-in-button {
   background-color: #E5533B;
   color: white;
+}
+
+#jumbotron-title {
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
+  font-weight: 900;
+  font-size: 20vh;
+  margin-left: 0px;
+}
+
+#jumbotron-caption {
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
+  font-size: 4vh;
+}
+
+nav {
+    margin: 0px;
+    background-color: #E5533B;
+}
+
+.jumbotron {
+  margin: 0px;
+}
+
+.background {
+  background-color: #EB722E;
 }

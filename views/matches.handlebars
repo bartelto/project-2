@@ -22,8 +22,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Matches</a>
-            <a class="nav-item nav-link" href="#">Profile</a>
+            <a class="nav-item nav-link" href="matches.handlebars">Matches</a>
+            <a class="nav-item nav-link" href="">Profile</a>
             <a class="nav-item nav-link" href="#">Our Story</a>
         </div>
     </div>
@@ -36,40 +36,83 @@
     <div id="matches-display-section" class="row">
         <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
         <template id="matches-template">
-            <div class="match-display-section col-12 col-sm-6 col-md-3">
+            <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal" data-target="#match-modal">
                 <div class="match-image-section">
+                    <!--this image is the match's profile image-->
                     <img src="" class="match-image">
                 </div>
                 <div class="match-name-section">
-                    <h3 class="match-name"></h3>
+                    <h3 class="match-name">
+                        <!--Match's name is displayed here-->
+                    </h3>
                 </div>
             </div>
         </template>
 
+        <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="match-modal-title">Here's your match!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-4" id="modal-image-section">
+                                <img src="" id="modal-image">
+                                <!--this image is the match's profile image-->
+                            </div>
+                            <div class="col-8" id="modal-name-section">
+                                <h2 id="modal-name">
+                                    <!--This is where the match's display name is displayed-->
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="modal-email-section">
+                                <p id="modal-email">
+                                    <!--This is where the match's email address is displayed-->
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h3>Games list:</h3>
+                        </div>
+                        <div class="row">
+                            <div id="modal-games-section">
+                                <!--This is where the match's games are displayed-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<!--footer will have links to our GitHub accounts-->
-<nav class="navbar navbar-light bg-light justify-content-center">
-    <a class="nav-item nav-link" href="#">Shannon</a>
-    <a class="nav-item nav-link" href="#">Ashley</a>
-    <a class="nav-item nav-link" href="#">Todd</a>
-    <a class="nav-item nav-link" href="#">Sable</a>
-</nav>
-
+    <!--footer will have links to our GitHub accounts-->
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="nav-item nav-link" href="#">Shannon</a>
+        <a class="nav-item nav-link" href="#">Ashley</a>
+        <a class="nav-item nav-link" href="#">Todd</a>
+        <a class="nav-item nav-link" href="#">Sable</a>
+    </nav>
 
 
 
 
 
-<!-- Importing jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!--Importing Bootstrap JavaScript-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    <!-- Importing jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <!--Importing Bootstrap JavaScript-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
