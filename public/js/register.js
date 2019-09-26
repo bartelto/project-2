@@ -75,14 +75,15 @@ var newUserSubmit = function (event) {
 
     API.newUser(User)
         .then(function () {
-            $.get("/api/users/" + currentFBUser.email, function (data) {
-                // log the data to our console
-                console.log(data);
-                currentUser = data;
+            // $.get("/api/users/" + currentFBUser.email, function (data) {
+            //     // log the data to our console
+            //     console.log(data);
+            //     currentUser = data;
 
-            }).then(function () {
-                window.location.href = "/matches";
-            });
+            // }).then(function () {
+            //     window.location.href = "/matches";
+            // });
+            window.location.href = "/matches";
 
         });
 
