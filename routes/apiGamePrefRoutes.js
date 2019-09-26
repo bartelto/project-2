@@ -10,7 +10,16 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new GamePref
+  // Create new GamePref(s)
+  /*app.post("/api/gameprefs", function(req, res) {
+    console.log(req.body);
+    console.log(JSON.parse(req.body));
+    db.GamePref.bulkCreate(req.body.list).then(function(dbGamePref) {
+      res.json(dbGamePref);
+    });
+  });*/
+
+  // Create new GamePref(s)
   app.post("/api/gameprefs", function(req, res) {
     db.GamePref.create(req.body).then(function(dbGamePref) {
       res.json(dbGamePref);

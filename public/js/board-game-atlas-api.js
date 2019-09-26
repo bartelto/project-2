@@ -149,7 +149,7 @@ $("#save-profile-button").on("click", function (event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
 
-    // Post data via AJAX
+    // Post User data via AJAX
     $.ajax("/api/users", {
       type: "POST",
       data: {
@@ -158,16 +158,29 @@ $("#save-profile-button").on("click", function (event) {
         imageUrl: $("#user-imageURL-input").val().trim(),
       }
     }).then(
-      function() {
-        console.log("added new user");
-        let addedGames = $(".addedGame");
-        for (let i = 0; i < addedGames.length; i++) {
-          console.log(addedGames[i].attr("data-name"));
+      function(data) {
+        console.log("added new user, id = " + data.id);
+        //let addedGames = $(".addedGame");
+        let list = $(".addedGame").map(function(){
+          let game = {
+            gameId: $(this).attr("data-id"),
+            gameName: $(this).attr("data-name"),
+            UserId: data.id
+          } 
+          return game; 
+        }).get();
+        //console.log(list);
+       
+        // Post GamePref data via AJAX
+        $.ajax("/api/gameprefs", {
+          type: "POST",
+          data: list[0]
+        }).then(
+          function() {
+            console.log("added new GamePrefs");
 
-        }
-        
-        // load the profile view page
-    
+          // load the profile view page
+          });
       }
     );
 
