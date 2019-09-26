@@ -15,9 +15,16 @@
 #index-buttons-section {
   background-color: white;
   background:rgba(255,255,255,0.5);
-  padding: 50px;
+  padding: 40px;
+  min-width: 40%;
   text-align: center;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #index-buttons-section {
+    min-width: 80%;
+  }
 }
 
 #index-icons-section {
@@ -79,6 +86,7 @@ nav {
 .background {
   background-color: #EB722E;
   padding-bottom: 20px;
+  min-height: 100vh;
 }
 
 #main-title {
@@ -107,6 +115,7 @@ a {
   max-width: 100%;
 }
 
-.match-name {
-
+#LOGIN-button {
+  background-color: #DF3349;
+  color: white;
 }
