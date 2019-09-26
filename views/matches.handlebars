@@ -1,77 +1,127 @@
-<!--spacing etc still needs to be worked out, but this is the basic layout of how I want the page-->
 <!--Header image. Will scroll away-->
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid"
+    style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
     <div class="container">
-        <h1 class="display-4">Game Spark</h1>
+        <h1 class="display-4" id="jumbotron-title">Game Spark</h1>
         <!--this tagline can totally be change. I just came up with it on the fly and am not particularly attached to it-->
-        <p class="lead">A social networking experience for nerds just like you.</p>
+        <p class="lead" id="jumbotron-caption">A social networking experience for nerds just like you.</p>
     </div>
 </div>
 
 
 <!--the main nav bar. I have the "our story" tab, but will take it out if I don't end up getting to that page-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <a class="navbar-brand" href="#">
-        <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-            alt="">
-        Game Spark
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Matches</a>
-            <a class="nav-item nav-link" href="#">Profile</a>
-            <a class="nav-item nav-link" href="#">Our Story</a>
+<div class="navbar-wrap">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbar">
+        <a class="navbar-brand" href="/profileView">
+            <img src="../public/images/gameSparkLogoWhite.svg" width="30" height="30" class="d-inline-block align-top">
+            Game Spark
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/matches">Matches</a>
+                <a class="nav-item nav-link" href="/profileView">Profile</a>
+                <a class="nav-item nav-link" href="about">Our Story</a>
+            </div>
         </div>
-    </div>
-</nav>
-
-<div class="container">
-    <div id="main-title-section">
-        <h1 id="main-title">Meet your matches</h1>
-    </div>
-    <div id="matches-display-section" class="row">
-        <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
-        <template id="matches-template">
-            <div class="match-display-section col-12 col-sm-6 col-md-3">
-                <div class="match-image-section">
-                    <img src="" class="match-image">
+    </nav>
+</div>
+<div class="background">
+    <div class="container">
+        <div id="main-title-section">
+            <h1 id="main-title">Meet your matches!</h1>
+        </div>
+        <div id="matches-display-section" class="row rounded">
+            <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
+            <template id="matches-template">
+                <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
+                    data-target="#match-modal">
+                    <div class="match-image-section">
+                        <!--this image is the match's profile image-->
+                        <img src="" class="match-image">
+                    </div>
+                    <div class="match-name-section">
+                        <h3 class="match-name">
+                            <!--Match's name is displayed here-->
+                        </h3>
+                    </div>
                 </div>
-                <div class="match-name-section">
-                    <h3 class="match-name"></h3>
+            </template>
+
+
+            <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="match-modal-title">Here's your match!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-4" id="modal-image-section">
+                                    <img src="" id="modal-image">
+                                    <!--this image is the match's profile image-->
+                                </div>
+                                <div class="col-8" id="modal-name-section">
+                                    <h2 id="modal-name">
+                                        <!--This is where the match's display name is displayed-->
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="modal-email-section">
+                                    <p id="modal-email">
+                                        <!--This is where the match's email address is displayed-->
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h3>Games list:</h3>
+                            </div>
+                            <div class="row">
+                                <div id="modal-games-section">
+                                    <!--This is where the match's games are displayed-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </template>
 
+
+        </div>
+
+        <!--footer will have links to our GitHub accounts-->
+        <nav class="navbar navbar-dark fixed-bottom justify-content-center" id="footer">
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/shannon-burke">Shannon</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/ashleyerffmeyer">Ashley</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
+            <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
+        </nav>
+
+
+
+
+
+
+        <!-- Importing jQuery library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!--Importing Bootstrap JavaScript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+            
+        <script type="text/javascript" src="js/matches.js"></script>
     </div>
 </div>
-
-<!--footer will have links to our GitHub accounts-->
-<nav class="navbar navbar-light bg-light justify-content-center">
-    <a class="nav-item nav-link" href="#">Shannon</a>
-    <a class="nav-item nav-link" href="#">Ashley</a>
-    <a class="nav-item nav-link" href="#">Todd</a>
-    <a class="nav-item nav-link" href="#">Sable</a>
-</nav>
-
-
-
-
-
-
-<!-- Importing jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!--Importing Bootstrap JavaScript-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="js/matches.js"></script>

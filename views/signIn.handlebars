@@ -1,0 +1,69 @@
+<div class="background"
+    style="background: linear-gradient(45deg, rgb(252, 209, 5) 0%, rgb(252, 209, 5) 6%,rgb(246, 177, 19) 6%, rgb(246, 177, 19) 19%,rgb(240, 146, 32) 19%, rgb(240, 146, 32) 41%,rgb(235, 114, 46) 41%, rgb(235, 114, 46) 55%,rgb(229, 83, 59) 55%, rgb(229, 83, 59) 94%,rgb(223, 51, 73) 94%, rgb(223, 51, 73) 100%)">
+    <div class="row">
+        <div id="index-title-section" class="col justify-content-center">
+            <h1 id="index-title">Welcome to Game Spark</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="index-icons-section" class="col-12">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+                <img src="../public/images/gameSparkLogoCircle.svg" class="index-icon">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="index-buttons-section" class="col-sm-11 col-md-4 align-center rounded">
+                <div class="form-group">
+                    <label for="user-email-input">Email address</label>
+                    <input type="email" class="form-control" id="user-email-input" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="user-password-input">Password</label>
+                    <input type="password" class="form-control" id="user-password-input" placeholder="Password">
+                </div>
+                <button type="button" id="LOGIN-button" class="btn btn-lg index-button">Log In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Importing jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--Importing Bootstrap JavaScript-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- Firebase scripts-->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCJHh2ifng2yuFDtWh_ANlr3JGTQQUl2Do",
+        authDomain: "groupproject-2.firebaseapp.com",
+        databaseURL: "https://groupproject-2.firebaseio.com",
+        projectId: "groupproject-2",
+        storageBucket: "",
+        messagingSenderId: "632422965301",
+        appId: "1:632422965301:web:407c34c8dba8e9848ad17c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<!--Importing our JavaScript-->
+<script type="text/javascript" src="/js/login.js"></script>

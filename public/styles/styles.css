@@ -8,16 +8,23 @@
 
 }
 
-.background {
+.landing-background {
   height: 100vh;
 }
 
 #index-buttons-section {
   background-color: white;
   background:rgba(255,255,255,0.5);
-  padding: 50px;
+  padding: 40px;
+  min-width: 40%;
   text-align: center;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #index-buttons-section {
+    min-width: 80%;
+  }
 }
 
 #index-icons-section {
@@ -47,4 +54,147 @@ color: white;
 #log-in-button {
   background-color: #E5533B;
   color: white;
+}
+
+#jumbotron-title {
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
+  font-weight: 900;
+  font-size: 20vh;
+  margin-left: 0px;
+}
+
+#jumbotron-caption {
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
+  font-size: 4vh;
+}
+
+nav {
+    margin: 0px;
+    background-color: #E5533B;
+}
+
+#footer {
+  background-color: #F09220;
+}
+
+.jumbotron {
+  margin: 0px;
+}
+
+.background {
+  background-color: #EB722E;
+  padding-bottom: 20px;
+  min-height: 100vh;
+}
+
+#main-title {
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #DF3349;
+}
+
+.match-display-section div {
+  text-align: center;
+  vertical-align: center;
+}
+
+#matches-display-section {
+  margin-bottom: 60px;
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  padding: 15px;
+}
+
+.match-image {
+  max-width: 100%;
+}
+
+#LOGIN-button {
+  background-color: #DF3349;
+  color: white;
+}
+.landing-background {
+  height: 100vh;
+}
+
+#profile-pic {
+  max-width: 100%;
+  max-height: 50vh;
+}
+
+#profile-pic-section {
+  text-align: center;
+}
+
+#user-name-pic {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #user-name-pic {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #user-name {
+    font-size: 20px;
+  }
+}
+
+.profile-wrapper {
+  padding-top: 10px;
+}
+
+#user-name-section {
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#user-name {
+  vertical-align: middle;
+  font-size: 50px;
+}
+
+#first-input-section {
+  padding-top: 10px;
+}
+
+#whole-form-section {
+  background-color: white;
+  background:rgba(255,255,255,0.5);
+  padding: 20px;
+  margin: 10px;
+}
+
+.btn-primary {
+  background-color: #DF3349;
+  color: white;
+  border-width: 0px;
+
+}
+
+.btn-primary:hover {
+  background-color: #E5533B;
+  color: white;
+  border-width: 0px;
+}
+
+#add-to-list-button {
+  margin-top: 5px;
 }

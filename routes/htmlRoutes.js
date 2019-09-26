@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
@@ -12,8 +13,8 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+  app.get("/example/:id", function (req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (
       dbExample
     ) {
       res.render("example", {
@@ -22,18 +23,28 @@ module.exports = function(app) {
     });
   });
 
-  // Load profile creation page
-  app.get("/user/", function(req, res) {
+  app.get("/profileCreation", function (req, res) {
     res.render("profileCreation");
   });
 
-  // Load matching users page
-  app.get("/matches/", function(req, res) {
+  app.get("/logIn", function (req, res) {
+    res.render("signIn");
+  });
+
+  app.get("/myProfile", function (req, res) {
+    res.render("profileView");
+  });
+
+  app.get("/matches", function (req, res) {
     res.render("matches");
   });
 
+  app.get("/about", function (req, res) {
+    res.render("about");
+  });
+
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };

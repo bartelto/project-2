@@ -78,5 +78,24 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+<!-- Firebase scripts-->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCJHh2ifng2yuFDtWh_ANlr3JGTQQUl2Do",
+        authDomain: "groupproject-2.firebaseapp.com",
+        databaseURL: "https://groupproject-2.firebaseio.com",
+        projectId: "groupproject-2",
+        storageBucket: "",
+        messagingSenderId: "632422965301",
+        appId: "1:632422965301:web:407c34c8dba8e9848ad17c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+
 <!--Importing our JavaScript-->
+<script type="text/javascript" src="/js/register.js"></script>
 <script type="text/javascript" src="/js/board-game-atlas-api.js"></script>
