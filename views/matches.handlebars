@@ -37,7 +37,7 @@
         </div>
         <div id="matches-display-section" class="row rounded">
             <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
-            <template id="matches-template">
+            <div id="matches-template" hidden>
                 <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
                     data-target="#match-modal">
                     <div class="match-image-section">
@@ -50,7 +50,7 @@
                         </h3>
                     </div>
                 </div>
-            </template>
+            </div>
 
             <!--dummy match to show what it *should* look like-->
             <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal" data-target="#match-modal">

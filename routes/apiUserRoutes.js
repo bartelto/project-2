@@ -38,7 +38,7 @@ module.exports = function (app) {
   app.get("/api/matches/:id", function (req, res) {
     db.sequelize
       .query(
-        "SELECT u.id, u.screenName, g.gameId AS userpref" +
+        "SELECT u.id, u.screenName, u.imageUrl, g.gameId  AS userpref" +
         " FROM Users u" +
         " JOIN GamePrefs g ON u.id = g.userId" +
         " JOIN GamePrefs h ON g.gameId = h.gameId AND g.userId <> h.userId" +
