@@ -63,7 +63,11 @@ var logIn = function (event) {
     //If FB login successful, this variable will no longer be empty. The findAccount function below
     // only queries if successfuly passed a valid email with the currentFBUser.
     currentFBUser = firebase.auth().currentUser;
-    console.log(currentFBUser.email);
+    if (currentFBUser) {
+        console.log(currentFBUser.email);
+    } else {
+        console.log("Login failed.");
+    }
 
     $.get("/api/users/" + currentFBUser.email, function (data) {
         // log the data to our console

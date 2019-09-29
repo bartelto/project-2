@@ -19,14 +19,15 @@ module.exports = function (app) {
   //   });
   // });
 
-  //Get specific user
+  //Get specific user by authId (email address)
   app.get("/api/users/:users?", function (req, res) {
     console.log("made it here");
     if (req.params.users) {
       db.User.findOne({
         where: {
           authId: req.params.users
-        }
+        },
+        include: [db.GamePref]
       }).then(function (result) {
         return res.json(result);
       });
