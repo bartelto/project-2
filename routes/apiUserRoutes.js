@@ -38,11 +38,13 @@ module.exports = function (app) {
   app.get("/api/matches/:id", function (req, res) {
     db.sequelize
       .query(
-        "SELECT u.id, u.screenName, u.imageUrl, g.gameId  AS userpref" +
+        "SELECT u.id, u.screenName, u.authId, u.imageUrl, COUNT(g.gameId) AS numMatches" +
         " FROM Users u" +
         " JOIN GamePrefs g ON u.id = g.userId" +
         " JOIN GamePrefs h ON g.gameId = h.gameId AND g.userId <> h.userId" +
-        " WHERE h.userid = ?",
+        " WHERE h.userid = ?" + 
+        " GROUP BY u.id" + 
+        " ORDER BY numMatches DESC",
         {
           replacements: [req.params.id],
           type: db.sequelize.QueryTypes.SELECT

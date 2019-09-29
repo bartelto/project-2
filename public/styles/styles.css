@@ -116,8 +116,13 @@ a:hover {
   padding: 15px;
 }
 
-.match-image {
+.match-image{
   max-width: 100%;
+}
+
+#modal-email,
+.modal-body a  {
+  color: black;
 }
 
 #LOGIN-button {

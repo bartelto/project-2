@@ -9,26 +9,29 @@ let $profileTemplate = $("#matches-template");
 
 updateMatches();
 
-$(document).click(".match-display-section", function(event) {
+$(document).on("click",".match-display-section", showModal);
+
+function showModal(event) {
+
   $selectedProfile = $(event.target).closest(".match-display-section");
   $("#modal-name").text($selectedProfile.find(".match-name").text());
+  $("#modal-email").text($selectedProfile.attr("data-email"))
+    .attr("href", `mailto:${$selectedProfile.attr("data-email")}`);
   $("#modal-image").attr("src",$selectedProfile.find(".match-image").attr("src"));
   $("#modal-games-list").empty();
   $.get(`api/gameprefs/${$selectedProfile.attr("data-user-id")}`, function(data) {
     data.forEach( function(game) {
-      let newGame = $("<li>").text(game.gameName);
+      let newGame = $("<li>");
+      let gameLink = $("<a target='_blank'></a>").attr("href",`https://www.boardgameatlas.com/search/game/${game.gameId}`).text(game.gameName);
+      newGame.append(gameLink);
       $("#modal-games-list").append(newGame);
     });
   });
 
   $('#match-modal').modal("show");
 
-})
-/*
-$('#match-modal').on('show.bs.modal', function (event) {
-  console.log("modal showing");
-});
-*/
+}
+
 function updateMatches() {
   // use AJAX to send a request for match data
   $.get("api/matches/1", function(data) {
@@ -43,6 +46,7 @@ function updateMatches() {
         //let newMatch = $("<div>").attr("data-id",match.id).html($profileTemplate.html()).appendTo("#matches-display-section");
         newMatch.attr("data-user-id",match.id);
         newMatch.find(".match-name").text(match.screenName); 
+        newMatch.attr("data-email",match.authId);
         newMatch.find(".match-image").attr("src",match.imageUrl);
       });
     }
