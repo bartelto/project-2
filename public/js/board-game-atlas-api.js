@@ -4,6 +4,22 @@
 $(document).ready(function () {
 
     console.log("page loaded");
+
+    // Firebase authentication
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log(user.email + " is logged in.");
+        currentFBUser = user;
+        $("#user-email-input")
+          .val(user.email)
+          .prop('disabled', true);
+      } else {
+        // User is signed out.
+        console.log("No user logged in.");
+        window.location.href = "/"; // back to login screen
+      }
+    });
 });
 
 //----------------------------------------------

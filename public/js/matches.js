@@ -6,8 +6,10 @@ console.log("loaded matches.js");
 // grab the user profile template
 let $profileTemplate = $("#matches-template");
 
+//This is the user's Firebase connection variable(empty until login)
+let currentFBUser;
 
-updateMatches();
+//updateMatches();
 
 $(document).on("click",".match-display-section", showModal);
 
@@ -34,7 +36,7 @@ function showModal(event) {
 
 function updateMatches() {
   // use AJAX to send a request for match data
-  $.get("api/matches/1", function(data) {
+  $.get(`api/matches/${currentFBUser.email}`, function(data) {
 
     if (data.length === 0) {
       $("#matches-display-section").append("<h3>Sorry, you have no matches!<h3>");
@@ -51,7 +53,18 @@ function updateMatches() {
       });
     }
   });
-
-
-
 }
+
+// Firebase authentication
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log(user.email + " is logged in.");
+    currentFBUser = user;
+    updateMatches();
+  } else {
+    // User is signed out.
+    console.log("No user logged in.");
+    window.location.href = "/"; // back to login screen
+  }
+});

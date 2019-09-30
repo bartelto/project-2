@@ -6,6 +6,8 @@
 //########################################################################
 //This file needs to be included on any pages that utilize user authentification(Which is all of them)
 
+console.log("loaded login.js");
+
 //This is the user's Firebase connection variable(empty until login)
 var currentFBUser;
 //This is the user's information that's been saved to the database(empty until login)
@@ -17,28 +19,6 @@ var $userPassword = $("#user-password-input");
 
 //variable for button
 var $loginBtn = $("#LOGIN-button");
-var $logoutBtn = $("#LOGOUT-button");
-
-
-//logout function that runs FB's logout function and empties the currentUser variables
-var logOut = function (event) {
-    event.preventDefault();
-
-    firebase.auth().signOut().then(function () {
-        // Sign-out successful.
-    }).catch(function (error) {
-        // An error happened.
-    });
-
-    $userEmail.val("");
-    $userPassword.val("");
-    currentFBUser = "";
-    currentUser;
-
-    // Bumps user back to index
-    window.location.href = "/";
-
-};
 
 //Login function that uses FB's login function and locates user from DB. Both are saved into coresponding currentUser variables.
 var logIn = function (event) {
@@ -62,6 +42,7 @@ var logIn = function (event) {
 
     //If FB login successful, this variable will no longer be empty. The findAccount function below
     // only queries if successfuly passed a valid email with the currentFBUser.
+    /*
     currentFBUser = firebase.auth().currentUser;
     if (currentFBUser) {
         console.log(currentFBUser.email);
@@ -74,7 +55,8 @@ var logIn = function (event) {
         console.log(data);
         currentUser = data;
 
-    }).then(function () {
+    //}).then(function () {
+        console.log("after getting user data?");
         console.log(currentUser);
         console.log(currentUser.authId);
 
@@ -109,17 +91,13 @@ var logIn = function (event) {
 
     $userEmail.val("");
     $userPassword.val("");
-
+*/
 
 
 };
 
 //Login button on register page
 $loginBtn.on("click", logIn);
-
-//Logout button on landing page
-$logoutBtn.on("click", logOut);
-
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -132,6 +110,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       var uid = user.uid;
       var providerData = user.providerData;*/
       console.log(user.email + " is logged in.");
+      currentFBUser = user;
+      window.location.href = "/matches";
     } else {
       // User is signed out.
       console.log("No user logged in.");
