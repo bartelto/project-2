@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 $(document).ready(function () {
 
-    console.log("page loaded");
+    console.log("board-game-atlas-api.js loaded");
 
     // Firebase authentication
     firebase.auth().onAuthStateChanged(function(user) {
@@ -14,10 +14,18 @@ $(document).ready(function () {
         $("#user-email-input")
           .val(user.email)
           .prop('disabled', true);
+        
+        // check the database for other user information
+        $.get(`/api/users/${user.email}`, function(data) {
+          console.log(data);
+          if (data) {
+            $("#user-name-input").val(data.screenName);
+            $("#user-imageURL-input").val(data.imageUrl);
+          }
+        });
       } else {
         // User is signed out.
         console.log("No user logged in.");
-        window.location.href = "/"; // back to login screen
       }
     });
 });
@@ -159,35 +167,37 @@ $("#add-to-list-button").on("click", function (event) {
 
 });
 
+
 // Event handler for save-profile-button
 $("#save-profile-button").on("click", function (event) {
-    console.log("SAVE PROFILE BUTTON clicked!");
+  console.log("SAVE PROFILE BUTTON clicked!");
 
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
+  // Preventing the button from trying to submit the form
+  event.preventDefault();
 
-    // Post User data via AJAX
-    $.ajax("/api/users", {
-      type: "POST",
-      data: {
-        authId: $("#user-email-input").val().trim(),
-        screenName: $("#user-name-input").val().trim(),
-        imageUrl: $("#user-imageURL-input").val().trim(),
-      }
-    }).then(
-      function(data) {
-        console.log("added new user, id = " + data.id);
-        //let addedGames = $(".addedGame");
-        let list = $(".addedGame").map(function(){
-          let game = {
-            gameId: $(this).attr("data-id"),
-            gameName: $(this).attr("data-name"),
-            UserId: data.id
-          } 
-          return game; 
-        }).get();
-        //console.log(list);
-       
+  console.log("email: " + $("#user-email-input").val().trim());
+  // Post User data via AJAX
+  let newUser = {
+    authId: $("#user-email-input").val().trim(),
+    screenName: $("#user-name-input").val().trim(),
+    imageUrl: $("#user-imageURL-input").val().trim()
+  };
+  $.post("/api/users", newUser).then(
+    function(data) {
+      console.log("added new user, id = " + data.id);
+      //let addedGames = $(".addedGame");
+      // create a list of the game preferences to add
+      let list = $(".addedGame").map(function(){
+        let game = {
+          gameId: $(this).attr("data-id"),
+          gameName: $(this).attr("data-name"),
+          UserId: data.id
+        } 
+        return game; 
+      }).get();
+      //console.log(list);
+      
+      if (list.length > 0) {
         // Post GamePref data via AJAX
         $.ajax("/api/gameprefs", {
           type: "POST",
@@ -196,12 +206,11 @@ $("#save-profile-button").on("click", function (event) {
           function() {
             console.log("added new GamePrefs");
 
-          // load the profile view page
-          });
+          // load the matches page
+          window.location.href = "/matches";
+        });
       }
-    );
-
-    // Empty divs
-    $("#game-search-results-section").empty();
-
+    }
+  );
 });
+
