@@ -19,32 +19,36 @@ module.exports = function (app) {
   //   });
   // });
 
-  //Get specific user
+  //Get specific user by authId (email address)
   app.get("/api/users/:users?", function (req, res) {
     console.log("made it here");
     if (req.params.users) {
       db.User.findOne({
         where: {
           authId: req.params.users
-        }
+        },
+        include: [db.GamePref]
       }).then(function (result) {
         return res.json(result);
       });
     }
   });
 
-  // Get all users that "match" the given UserId
+  // Get all users that "match" the given AuthId (email address)
   // i.e. share at least one GamePref in common
-  app.get("/api/matches/:id", function (req, res) {
+  app.get("/api/matches/:authid", function (req, res) {
     db.sequelize
       .query(
-        "SELECT u.id, u.screenName, g.gameId AS userpref" +
+        "SELECT u.id, u.screenName, u.authId, u.imageUrl, COUNT(g.gameId) AS numMatches" +
         " FROM Users u" +
         " JOIN GamePrefs g ON u.id = g.userId" +
         " JOIN GamePrefs h ON g.gameId = h.gameId AND g.userId <> h.userId" +
-        " WHERE h.userid = ?",
+        " JOIN Users v on h.userId = v.id" +
+        " WHERE v.authId = ?" +
+        " GROUP BY u.id" + 
+        " ORDER BY numMatches DESC",
         {
-          replacements: [req.params.id],
+          replacements: [req.params.authid],
           type: db.sequelize.QueryTypes.SELECT
         }
       )

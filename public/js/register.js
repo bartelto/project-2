@@ -26,7 +26,7 @@ var API = {
             data: JSON.stringify(User)
         });
     }
-    //Left as object incase more functions are wanted on this page.
+    //Left as object in case more functions are wanted on this page.
 };
 
 // handleFormSubmit is called whenever we submit a new user
@@ -67,12 +67,13 @@ var newUserSubmit = function (event) {
             var errorCode = error.code;
             var errorMessage = error.message;
         });
-
+        /*
     $userEmail.val("");
     $userPassword.val("");
     $userName.val("");
     $userImg.val("");
-
+    */
+/*
     API.newUser(User)
         .then(function () {
             // $.get("/api/users/" + currentFBUser.email, function (data) {
@@ -86,8 +87,9 @@ var newUserSubmit = function (event) {
             window.location.href = "/matches";
 
         });
-
+*/
 };
 
 //Submit button on register page
 $registerBtn.on("click", newUserSubmit);
+

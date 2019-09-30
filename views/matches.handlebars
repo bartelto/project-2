@@ -22,8 +22,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/matches">Matches</a>
-                <a class="nav-item nav-link active" href="/profileView">Profile</a>
+                <a class="nav-item nav-link active" href="/matches">Matches</a>
+                <a class="nav-item nav-link" href="/profileView">Profile</a>
                 <a class="nav-item nav-link" href="about">Our Story</a>
                 <a class="nav-item nav-link pull-right" id="LOGOUT-button">Logout</a>
             </div>
@@ -37,9 +37,8 @@
         </div>
         <div id="matches-display-section" class="row rounded">
             <!--This is the template that will hold the match's image and display name for the user to click on in order to view their full profile information-->
-            <template id="matches-template">
-                <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal"
-                    data-target="#match-modal">
+            <div id="matches-template" hidden>
+                <div class="match-display-section col-12 col-sm-6 col-md-3">
                     <div class="match-image-section">
                         <!--this image is the match's profile image-->
                         <img src="" class="match-image">
@@ -50,10 +49,10 @@
                         </h3>
                     </div>
                 </div>
-            </template>
+            </div>
 
             <!--dummy match to show what it *should* look like-->
-            <div class="match-display-section col-12 col-sm-6 col-md-3" data-toggle="modal" data-target="#match-modal">
+            <div class="match-display-section col-12 col-sm-6 col-md-3">
                 <div class="match-image-section">
                     <!--this image is the match's profile image-->
                     <img src="https://i.imgur.com/FjSPtdg.jpg" class="match-image">
@@ -65,51 +64,50 @@
                     </h3>
                 </div>
             </div>
+        </div>
 
-
-            <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="match-modal-title">Here's your match!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="match-modal-title"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="match-modal-title">Here's your match!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-4" id="modal-image-section">
+                                <img src="" id="modal-image">
+                                <!--this image is the match's profile image-->
+                            </div>
+                            <div class="col-8" id="modal-name-section">
+                                <h2 id="modal-name">
+                                    <!--This is where the match's display name is displayed-->
+                                </h2>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-4" id="modal-image-section">
-                                    <img src="" id="modal-image">
-                                    <!--this image is the match's profile image-->
-                                </div>
-                                <div class="col-8" id="modal-name-section">
-                                    <h2 id="modal-name">
-                                        <!--This is where the match's display name is displayed-->
-                                    </h2>
-                                </div>
+                        <div class="row">
+                            <div id="modal-email-section">
+                                <a id="modal-email">
+                                    <!--This is where the match's email address is displayed-->
+                                </a>
                             </div>
-                            <div class="row">
-                                <div id="modal-email-section">
-                                    <p id="modal-email">
-                                        <!--This is where the match's email address is displayed-->
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <h3>Games list:</h3>
-                            </div>
-                            <div class="row">
-                                <div id="modal-games-section">
-                                    <!--This is where the match's games are displayed-->
-                                </div>
+                        </div>
+                        <div class="row">
+                            <h3>Games list:</h3>
+                            <ul id="modal-games-list">
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div id="modal-games-section">
+                                <!--This is where the match's games are displayed-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
 
         <!--footer will have links to our GitHub accounts-->
@@ -119,11 +117,6 @@
             <a class="nav-item nav-link" class="footer-link" href="https://github.com/bartelto">Todd</a>
             <a class="nav-item nav-link" class="footer-link" href="https://github.com/SableVonHoover">Sable</a>
         </nav>
-
-
-
-
-
 
         <!-- Importing jQuery library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -137,7 +130,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
             
-        <script type="text/javascript" src="js/matches.js"></script>
+        
     </div>
 </div>
 
@@ -159,5 +152,6 @@
 </script>
 
 <!--Importing our JavaScript-->
-<script type="text/javascript" src="/js/login.js"></script>
-
+<!--<script type="text/javascript" src="/js/login.js"></script>-->
+<script type="text/javascript" src="js/matches.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
