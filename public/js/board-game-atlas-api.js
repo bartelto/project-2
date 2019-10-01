@@ -200,14 +200,17 @@ $("#save-profile-button").on("click", function (event) {
       if (list.length > 0) {
         // Post GamePref data via AJAX
         $.ajax("/api/gameprefs", {
+          headers: {
+            "Content-Type": "application/json"
+          },
           type: "POST",
-          data: list[0]
+          data: JSON.stringify(list)
         }).then(
           function() {
             console.log("added new GamePrefs");
 
           // load the matches page
-          window.location.href = "/matches";
+          window.location.href = "/matches"; 
         });
       }
     }
