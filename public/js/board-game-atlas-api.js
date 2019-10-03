@@ -1,6 +1,8 @@
 /* eslint-disable quotes */
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
+var userDataExists = false;
+
 $(document).ready(function () {
 
     console.log("board-game-atlas-api.js loaded");
@@ -14,13 +16,17 @@ $(document).ready(function () {
         $("#user-email-input")
           .val(user.email)
           .prop('disabled', true);
-        
-        // check the database for other user information
+
+        // check the database for other user information, including GamePrefs
         $.get(`/api/users/${user.email}`, function(data) {
-          console.log(data);
+          //console.log(data);
           if (data) {
+            userDataExists = true;
             $("#user-name-input").val(data.screenName);
             $("#user-imageURL-input").val(data.imageUrl);
+            readGamePrefs(data);
+          } else {
+            userDataExists = false;
           }
         });
       } else {
@@ -29,6 +35,27 @@ $(document).ready(function () {
       }
     });
 });
+
+function readGamePrefs(user) {
+  // hit API with game IDs for game names and images
+  let games = [];
+  console.log(user);
+  user.GamePrefs.forEach( function(game) {
+    games.push(game.gameId);
+  });
+
+  let queryURL = `https://www.boardgameatlas.com/api/search?ids=${games.join(",")}&client_id=qMobPffMew`;
+  console.log(queryURL);
+
+  // Performing our AJAX GET request
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then( function(response) {
+    console.log(response);
+    renderGames(response.games, "#user-list-gallery-section")
+  });
+}
 
 //----------------------------------------------
 // FUNCTIONS
@@ -134,6 +161,40 @@ var searchForGameImage = function (game) {
         });
 };
 
+// 
+function renderGames(gameResults, targetParent) {
+  
+  gameResults.forEach(function(game) {
+    console.log(game.name);
+    // Creating a div for the board game images
+    var gameImageDiv = $(`<div class="divForGameImage">`);
+
+    // Adding a submit type, id, and value attribute to gameImageDiv
+    gameImageDiv.attr("type", "submit")
+      .attr("id", game.id)
+      .attr("value", "searched")
+      .attr("data-id", game.id)
+      .attr("data-name", game.name)
+      .attr("data-image", game.images.small);
+
+    // Creating game name paragraph
+    var gameName = $("<p>").text(game.name);
+    gameName.attr("id", "searchedGameName");
+
+    // Giving the image tag an src attribute and a new id
+    var gameImage = $("<img>");
+    gameImage.attr("src", game.images.small);
+    gameImage.attr("id", "searchedGameImage");
+
+    // Append the gameImage & gameName we created to the created "gameImageDiv" div
+    gameImageDiv.append(gameImage);
+    gameImageDiv.append(gameName);
+
+    // Append the gameImageDiv to the "#searched-images-appear-here" div in the HTML
+    $(targetParent).append(gameImageDiv);
+  });
+};
+
 //----------------------------------------------
 // EVENT HANDLERS
 //----------------------------------------------
@@ -176,44 +237,94 @@ $("#save-profile-button").on("click", function (event) {
   event.preventDefault();
 
   console.log("email: " + $("#user-email-input").val().trim());
-  // Post User data via AJAX
-  let newUser = {
-    authId: $("#user-email-input").val().trim(),
-    screenName: $("#user-name-input").val().trim(),
-    imageUrl: $("#user-imageURL-input").val().trim()
-  };
-  $.post("/api/users", newUser).then(
-    function(data) {
-      console.log("added new user, id = " + data.id);
-      //let addedGames = $(".addedGame");
-      // create a list of the game preferences to add
-      let list = $(".addedGame").map(function(){
-        let game = {
-          gameId: $(this).attr("data-id"),
-          gameName: $(this).attr("data-name"),
-          UserId: data.id
-        } 
-        return game; 
-      }).get();
-      //console.log(list);
-      
-      if (list.length > 0) {
-        // Post GamePref data via AJAX
-        $.ajax("/api/gameprefs", {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          type: "POST",
-          data: JSON.stringify(list)
-        }).then(
-          function() {
-            console.log("added new GamePrefs");
 
+  if (!currentFBUser || !userDataExists) {
+    // Post User data via AJAX
+    let newUser = {
+      authId: $("#user-email-input").val().trim(),
+      screenName: $("#user-name-input").val().trim(),
+      imageUrl: $("#user-imageURL-input").val().trim()
+    };
+    $.post("/api/users", newUser).then(
+      function(data) {
+        console.log("added new user, id = " + data.id);
+        //let addedGames = $(".addedGame");
+        // create a list of the game preferences to add
+        let list = $(".addedGame").map(function(){
+          let game = {
+            gameId: $(this).attr("data-id"),
+            gameName: $(this).attr("data-name"),
+            UserId: data.id
+          } 
+          return game; 
+        }).get();
+        //console.log(list);
+        
+        if (list.length > 0) {
+          // Post GamePref data via AJAX
+          $.ajax("/api/gameprefs", {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            type: "POST",
+            data: JSON.stringify(list)
+          }).then(
+            function() {
+              console.log("added new GamePrefs");
+
+            // load the matches page
+            window.location.href = "/matches"; 
+          });
+        } else { // no game preferences
           // load the matches page
           window.location.href = "/matches"; 
-        });
+        }
       }
-    }
-  );
+    );
+  } else { 
+    // update the logged-in user
+    let updatedUser = {
+      authId: $("#user-email-input").val().trim(),
+      screenName: $("#user-name-input").val().trim(),
+      imageUrl: $("#user-imageURL-input").val().trim()
+    };
+    $.ajax("/api/users", {
+      type: "PUT",
+      data: updatedUser
+    }).then( function(data) {
+        console.log("updating user " + data.authId);
+        //let addedGames = $(".addedGame");
+        // create a list of the game preferences to add
+        /*let list = $(".addedGame").map(function(){
+          let game = {
+            gameId: $(this).attr("data-id"),
+            gameName: $(this).attr("data-name"),
+            UserId: data.id
+          } 
+          return game; 
+        }).get();
+        //console.log(list);
+        
+        if (list.length > 0) {
+          // Post GamePref data via AJAX
+          $.ajax("/api/gameprefs", {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            type: "POST",
+            data: JSON.stringify(list)
+          }).then(
+            function() {
+              console.log("added new GamePrefs");
+
+            // load the matches page
+            window.location.href = "/matches"; 
+          });
+        }
+        */
+      }
+    );
+    
+  }
 });
 

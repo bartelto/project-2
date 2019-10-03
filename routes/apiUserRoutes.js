@@ -64,11 +64,9 @@ module.exports = function (app) {
     });
   });
 
-  // Update a user
+  // Update a user with a certain authId (email address)
   app.put("/api/users", function (req, res) {
-    db.User.update(req.body, { where: { id: req.body.id } }).then(function (
-      dbUser
-    ) {
+    db.User.update(req.body, { where: { authId: req.body.authId } }).then(function (dbUser) {
       res.json(dbUser);
     });
   });
