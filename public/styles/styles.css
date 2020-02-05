@@ -120,6 +120,10 @@ a:hover {
   max-width: 100%;
 }
 
+#modal-image {
+  width: 100%;
+}
+
 #modal-email,
 .modal-body a  {
   color: black;
