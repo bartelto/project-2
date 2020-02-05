@@ -50,6 +50,7 @@ function updateMatches() {
         newMatch.find(".match-name").text(match.screenName); 
         newMatch.attr("data-email",match.authId);
         newMatch.find(".match-image").attr("src",match.imageUrl);
+        newMatch.find(".match-count").text(match.numMatches);
       });
     }
   });
